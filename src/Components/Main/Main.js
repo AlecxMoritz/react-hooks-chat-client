@@ -22,7 +22,7 @@ const Main = (props) => {
                     <Sidebar token={ props.token } logout={ props.logout } setActive={ setActive }/>
                 </Col>
                 <Col xs="8">
-                    <ActiveDisplay item={ activeItem } type={ activeType } />
+                    <ActiveDisplay item={ activeItem } type={ activeType } token={ props.token } />
                 </Col>
             </Row>
         </Container>

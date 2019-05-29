@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Signin from './Signin/Signin';
 import Signup from './Signup/Signup';
-import { Card, Container, Col, Row } from 'reactstrap';
+import { Card, Container, Col, Row, Button } from 'reactstrap';
 import './Auth.css';
 
 const Auth = (props) => {
@@ -14,10 +14,20 @@ const Auth = (props) => {
     return (
         <Container>
             <Row>
-                <Col xs="1"></Col>
-                <Col xs="4">
-                    <h2>To enjoy Niche you need account. Please sign up or sign back in.</h2>
+                <Col xs="12">
+                    <h1>Niche</h1>
                 </Col>
+            </Row>
+            <Row>
+                <Col xs="6">
+                    <Button>Sign Up</Button>
+                </Col>
+                <Col xs="6">
+                    <Button>Sign In</Button>
+                </Col>
+            </Row>
+
+            <Row>
                 <Col xs="1"></Col>
                 <Col xs="5">
                     <Card className="auth-card">

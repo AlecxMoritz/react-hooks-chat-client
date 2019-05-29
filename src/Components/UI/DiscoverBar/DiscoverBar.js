@@ -27,7 +27,7 @@ const DiscoverBar = (props) => {
                 <Label>Find your new Niche</Label>
                 <Input type="text" />
             </Form>
-            <ChannelDisplay setActive={ props.setActive } channels= { channels } />
+            <ChannelDisplay setActive={ props.setActive } channels= { channels } token={ props.token }/>
         </div>
     )
 }
