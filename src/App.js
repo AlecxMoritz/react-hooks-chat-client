@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import Auth from './Components/Auth/Auth';
+import Main from './Components/Main/Main';
 
 function App() {
+  const [ token, setToken ] = useState(undefined);
+
+  useEffect(() => {
+    let token = localStorage.getItem('token');
+
+    if(token) {
+      setToken(token);
+    }
+  }, [])
+
+  const clearToken = () => {
+    setToken(undefined);
+    localStorage.removeItem('token');
+  }
+
+  const toggle = () => {
+    if(token) {
+      return <Main logout={ clearToken } token={ token } />
+    } else {
+      return <Auth setToken= { setToken } />
+    }
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      { toggle() }
     </div>
   );
 }
