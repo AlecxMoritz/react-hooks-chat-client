@@ -16,7 +16,7 @@ const Main = (props) => {
                 <Row>
                     <Col xs="12">
                         <Switch>
-                            <Route path="/dashboard" exact component={ DashboardRoute }></Route>
+                            <Route path="/" exact component={ DashboardRoute }></Route>
                             <Route path="/channels" exact component={ ChannelsRoute }></Route>
                             <Route path="/info" exact component={ ChannelInfoRoute }></Route>
                             <Route path="/search" exact component={ SearchRoute }></Route>
