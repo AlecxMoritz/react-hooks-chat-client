@@ -31,6 +31,7 @@ class App extends React.Component  {
 
   clearToken = (token) => {
     localStorage.removeItem('token');
+    this.setState({ token : '' })
   }
   
   toggle = () => {
