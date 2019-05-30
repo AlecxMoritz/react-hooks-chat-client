@@ -4,7 +4,7 @@ const JoinedChannelsList = (props) => {
     return (
         <ul>
             { props.channels.map(channel => {
-                return <li key={ channel.id }>{ channel.Channel.name }</li>
+                return <li className="list-item" key={ channel.id } onClick={(e) => props.setActive(channel.Channel, 'joined')}>{ channel.Channel.name }</li>
             })}
         </ul>
     )

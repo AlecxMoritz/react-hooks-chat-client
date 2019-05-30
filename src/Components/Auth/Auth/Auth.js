@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-
-import Signin from './Signin/Signin';
-import Signup from './Signup/Signup';
 import { Card, Container, Col, Row, Button } from 'reactstrap';
 import './Auth.css';
 
@@ -16,18 +13,21 @@ const Auth = (props) => {
     return (
         <Container className="auth-container">
             <Row className="auto-row">
-                <Col xs="12">
-                    <h1 className="title" >Niche</h1>
+                <Col xs="10">
+                    <h1 className="title margin-top" >Niche</h1>
+                </Col>
+                <Col xs="2">
+                    <p className="margin-top">Sign up or sign in to use Niche</p>
                 </Col>
             </Row>
             <Row  className="auto-row">
                 <Col xs="6">
-                    <Button className="auth-button">
+                    <Button className="margin-top">
                         <Link to="/signup" className="link">Sign Up</Link>
                     </Button>
                 </Col>
                 <Col xs="6">
-                    <Button  className="auth-button">
+                    <Button  className="margin-top">
                         <Link to="/signin" className="link">Sign In</Link>
                     </Button>
                 </Col>

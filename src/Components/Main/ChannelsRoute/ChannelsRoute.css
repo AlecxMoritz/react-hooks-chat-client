@@ -1,0 +1,14 @@
+.channel-select {
+    background-color: black;
+    margin : 0;
+    position : absolute;
+    top : 0;
+    left : 0;
+    bottom : 0;
+    min-width : 100%;
+    min-height : 100vh
+}
+
+.row-padding {
+    padding-left : 0;
+}
