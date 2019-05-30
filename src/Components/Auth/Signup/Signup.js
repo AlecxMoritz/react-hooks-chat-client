@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, FormGroup, Input, Label, Button } from 'reactstrap';
+import { Row, Col, FormGroup, Input, Label, Button, Container } from 'reactstrap';
 
 const Signup = (props) => {
     const [ screenname, setScreenname ] = useState('');
@@ -33,8 +33,15 @@ const Signup = (props) => {
     }
 
     return (
-        <React.Fragment>
-            <Form onSubmit={(e) => handleSubmit(e)} className="card">
+        <Container fluid={ true }>
+            <Row>
+                <Col>
+                    <h2>Sign up for a new account on Niche</h2>
+                </Col>
+            </Row>
+            <Row>
+            <Col xs="2"></Col>
+            <Col xs="8">
                 <FormGroup>
                     <Label>Screen name</Label>
                     <Input type="text" required onChange={(e) => setScreenname(e.target.value) }/>
@@ -51,9 +58,11 @@ const Signup = (props) => {
                     <Label>Password</Label>
                     <Input type="password" required onChange={(e) => setPassword(e.target.value)} />
                 </FormGroup>
-                <Button type="submit">Sign Up</Button>
-            </Form>
-        </React.Fragment>
+                <Button onClick={(e) => handleSubmit(e)}>Sign Up</Button>
+            </Col>
+            <Col xs="2"></Col>
+            </Row>
+        </Container>
     )
 }
 

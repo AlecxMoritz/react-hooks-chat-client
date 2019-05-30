@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import Auth from './Components/Auth/Auth';
+import AuthIndex from './Components/Auth/AuthIndex';
 import Main from './Components/Main/Main';
 import AuthContext from './Contexts/AuthContext';
 
@@ -38,7 +38,7 @@ class App extends React.Component  {
     if(this.state.token) {
       return <Main logout={ this.clearToken } token={ this.token } />
     } else {
-      return <Auth setToken= { this.state.setToken } />
+      return <AuthIndex setToken= { this.state.setToken } />
     }
   }
 

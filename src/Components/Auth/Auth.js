@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import Signin from './Signin/Signin';
 import Signup from './Signup/Signup';
@@ -22,23 +22,15 @@ const Auth = (props) => {
             </Row>
             <Row  className="auto-row">
                 <Col xs="6">
-                    <Button className="auth-button">Sign Up</Button>
+                    <Button className="auth-button">
+                        <Link to="/signup" className="link">Sign Up</Link>
+                    </Button>
                 </Col>
                 <Col xs="6">
-                    <Button  className="auth-button">Sign In</Button>
+                    <Button  className="auth-button">
+                        <Link to="/signin" className="link">Sign In</Link>
+                    </Button>
                 </Col>
-            </Row>
-
-            <Row>
-                <Col xs="1"></Col>
-                <Col xs="5">
-                    <Card className="auth-card">
-                        <h2>{ login ? 'Sign In' : 'Sign Up' }</h2>
-                        <p onClick={toggle}>{ login ? 'Need an account?' : 'I have an account' }</p>
-                        { login ? <Signin setToken={ props.setToken } /> : <Signup setToken={ props.setToken } /> }
-                    </Card>
-                </Col>
-                <Col xs="1"></Col>
             </Row>
         </Container>
     )
