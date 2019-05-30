@@ -19,6 +19,9 @@ const ChannelsRoute = (props) => {
     };
 
     const getChannels = () => {
+        setActiveChannel({});
+        setActiveType('');
+
         console.log(props.auth);
         fetch('http://localhost:8080/api/userchannels/', {
             headers : {
@@ -64,7 +67,7 @@ const ChannelsRoute = (props) => {
                     </div>
                 </Col>
                 <Col xs="10">
-                    <ActiveChannel channel={ activeChannel } type={ activeType } getChannels={ getChannels } />
+                    <ActiveChannel history={ props.history } channel={ activeChannel } type={ activeType } getChannels={ getChannels } />
                 </Col>
             </Row>
         </Container>

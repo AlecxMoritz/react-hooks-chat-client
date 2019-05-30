@@ -25,7 +25,25 @@ const ActiveChannel = (props) => {
         .catch(err => console.log(err));
 
         props.getChannels();
-    }
+    };
+
+    const leaveChannel = () => {
+        fetch(`http://localhost:8080/api/userchannels/${props.channel.id}`, {
+            method : 'DELETE',
+            headers : {
+                'Content-Type' : 'application/json',
+                'Authorization' : props.auth.token
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(props);
+            props.history.replace('/channels')
+            // props.getChannels();
+            console.log(data);
+        })
+        .catch(err => console.log(err));
+    };
 
     const display = () => {
         if(props.type === 'owned') {
@@ -55,20 +73,21 @@ const ActiveChannel = (props) => {
                 </Row>
             </Container>
             )
-        } else {
+        } else if(props.type === 'joined') {
             return (
                 <Container>
                     <Row>
                         <Col xs="9">
-                            <h2>{ props.channel.name }</h2>
+                            <h2>{ props.channel.Channel.name }</h2>
                             <hr />
-                            <h4>{ props.channel.tagline }</h4>
-                            <p>{ props.channel.purpose }</p>
+                            <h4>{ props.channel.Channel.tagline }</h4>
+                            <p>{ props.channel.Channel.purpose }</p>
                         </Col>
-                        <Col>
-                            <Button>
+                        <Col xs="3">
+                            {/* <Button onClick={(e) => leaveChannel() }>
                                 Leave
-                            </Button>
+                                fix this button
+                            </Button> */}
                         </Col>
                     </Row>
                     <Row>
@@ -79,6 +98,8 @@ const ActiveChannel = (props) => {
                     </Row>
                 </Container>
             )
+        } else {
+            return <div></div>
         }
     }
 
