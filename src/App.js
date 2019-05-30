@@ -24,16 +24,15 @@ class App extends React.Component  {
     }
   }
   
-  login = (token) => {
-    localStorage.setItem('token', token);
+  componentDidMount = () => {
+    let token = localStorage.getItem('token');
+    this.setState({ token : token })
   }
-  
+
   clearToken = (token) => {
     localStorage.removeItem('token');
   }
   
-
-
   toggle = () => {
     if(this.state.token) {
       return <Main logout={ this.clearToken } token={ this.token } />

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Row, Col, FormGroup, Input, Label, Button, Container } from 'reactstrap';
 
 const Signup = (props) => {
@@ -28,6 +29,7 @@ const Signup = (props) => {
         .then(data => {
             localStorage.setItem('token', data.token);
             props.setToken(data.token);
+            
         })
         .catch(err => console.log(err))
     }
@@ -59,6 +61,7 @@ const Signup = (props) => {
                     <Input type="password" required onChange={(e) => setPassword(e.target.value)} />
                 </FormGroup>
                 <Button onClick={(e) => handleSubmit(e)}>Sign Up</Button>
+                <Link to="/"><p>Back</p></Link>
             </Col>
             <Col xs="2"></Col>
             </Row>

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Row, Col, FormGroup, Input, Label, Button, Container } from 'reactstrap';
 import AuthContext from '../../../Contexts/AuthContext';
 
@@ -52,6 +53,7 @@ const Signin = (props) => {
                         <Input type="password" required onChange={(e) => setPassword(e.target.value) }/>
                     </FormGroup>
                     <Button type="submit" onClick={(e) => handleSubmit(e)}>Sign In</Button>
+                    <Link to="/"><p>Back</p></Link>
                 </Col>
                 <Col xs="2"></Col>
             </Row>
