@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+
 import Signin from './Signin/Signin';
 import Signup from './Signup/Signup';
 import { Card, Container, Col, Row, Button } from 'reactstrap';
@@ -12,18 +14,18 @@ const Auth = (props) => {
     }
 
     return (
-        <Container>
-            <Row>
+        <Container className="auth-container">
+            <Row className="auto-row">
                 <Col xs="12">
-                    <h1>Niche</h1>
+                    <h1 className="title" >Niche</h1>
                 </Col>
             </Row>
-            <Row>
+            <Row  className="auto-row">
                 <Col xs="6">
-                    <Button>Sign Up</Button>
+                    <Button className="auth-button">Sign Up</Button>
                 </Col>
                 <Col xs="6">
-                    <Button>Sign In</Button>
+                    <Button  className="auth-button">Sign In</Button>
                 </Col>
             </Row>
 

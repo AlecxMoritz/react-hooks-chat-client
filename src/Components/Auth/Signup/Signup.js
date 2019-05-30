@@ -34,7 +34,7 @@ const Signup = (props) => {
 
     return (
         <React.Fragment>
-            <Form onSubmit={(e) => handleSubmit(e)}>
+            <Form onSubmit={(e) => handleSubmit(e)} className="card">
                 <FormGroup>
                     <Label>Screen name</Label>
                     <Input type="text" required onChange={(e) => setScreenname(e.target.value) }/>
