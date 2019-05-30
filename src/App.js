@@ -1,37 +1,56 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import Auth from './Components/Auth/Auth';
+import AuthIndex from './Components/Auth/AuthIndex';
 import Main from './Components/Main/Main';
+import AuthContext from './Contexts/AuthContext';
 
-function App() {
-  const [ token, setToken ] = useState(undefined);
+class App extends React.Component  {
+  constructor() {
+    super();
+    this.setToken = (token) => {
+      localStorage.setItem('token', token);
+      this.setState({ token : token });
+    }
 
-  useEffect(() => {
+    this.setUser = (user) => {
+      this.setState({ user : user });
+    }
+
+    this.state = {
+      token : '',
+      user : {},
+      setToken : this.setToken,
+      setUser : this.setUser
+    }
+  }
+  
+  componentDidMount = () => {
     let token = localStorage.getItem('token');
+    this.setState({ token : token })
+  }
 
-    if(token) {
-      setToken(token);
-    }
-  }, [])
-
-  const clearToken = () => {
-    setToken(undefined);
+  clearToken = (token) => {
     localStorage.removeItem('token');
+    this.setState({ token : '' })
   }
-
-  const toggle = () => {
-    if(token) {
-      return <Main logout={ clearToken } token={ token } />
+  
+  toggle = () => {
+    if(this.state.token) {
+      return <Main logout={ this.clearToken } token={ this.token } />
     } else {
-      return <Auth setToken= { setToken } />
+      return <AuthIndex setToken= { this.state.setToken } />
     }
   }
 
-  return (
-    <div className="App">
-      { toggle() }
-    </div>
-  );
+  render() {
+    return (
+      <div className="App">
+        <AuthContext.Provider value={ this.state }>
+          { this.toggle() }
+        </AuthContext.Provider>
+      </div>
+    );
+  }
 }
 
 export default App;

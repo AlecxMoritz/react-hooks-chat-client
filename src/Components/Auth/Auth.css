@@ -2,4 +2,28 @@
     max-width : 40vw;
     margin : auto;
     padding : 1em;
+    color : black;
+}
+
+.title {
+    font-family: 'Press Start 2P', cursive;
+    font-size : 5em;
+    margin-top : 25vh;
+}
+
+.auth-row {
+    height : 40vh;
+}
+
+.auth-button {
+    margin-top : 25vh;
+}
+
+.link {
+    color : white;
+}
+
+.link:hover {
+    color : white;
+    text-decoration: none;
 }
