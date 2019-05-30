@@ -2,14 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { Container, Row, Col } from 'reactstrap';
 import MyChannelsList from './MyChannelsList/MyChannelsList';
 import JoinedChannelsList from './JoinedChannelsList/JoinedChannelsList';
+import ActiveChannel from './ActiveChannel/ActiveChannel';
 import AuthContext from '../../../Contexts/AuthContext';
+import './ChannelsRoute.css';
 
 const ChannelsRoute = (props) => {
     const [ myChannels, setMyChannels ] = useState([]);
     const [ joinedChannels, setJoinedChannels ] = useState([]);
     const [ activeChannel, setActiveChannel ] = useState([]);
+    const [ activeType, setActiveType ] = useState('');
 
-    useEffect(() => {
+    const setActive = (channel, type) => {
+        setActiveChannel(channel);
+        setActiveType(type);
+        console.log(channel);
+    };
+
+    const getChannels = () => {
+        setActiveChannel({});
+        setActiveType('');
+
         console.log(props.auth);
         fetch('http://localhost:8080/api/userchannels/', {
             headers : {
@@ -31,23 +43,31 @@ const ChannelsRoute = (props) => {
             .then(data => {
                 console.log("my channels =>", data);
                 setMyChannels(data);
+                setActive(data[0]);
+                setActiveType('owned');
             })
             .catch(err => console.log(err));
         })
         .catch(err => console.log(err));
+    }
+
+    useEffect(() => {
+        getChannels();
     }, [])
 
     return (
         <Container fluid={ true }>
-            <Row>
-                <Col xs="3">
-                    <h4>My Niches</h4>
-                    <MyChannelsList channels={ myChannels }/>
-                    <h4>Joined Niches</h4>
-                    <JoinedChannelsList channels={ joinedChannels } />
+            <Row className="row-padding">
+                <Col xs="2">
+                    <div className="channel-select">
+                        <h4>My Niches</h4>
+                        <MyChannelsList channels={ myChannels } setActive={ setActive } />
+                        <h4>Joined Niches</h4>
+                        <JoinedChannelsList channels={ joinedChannels } setActive={ setActive } />
+                    </div>
                 </Col>
-                <Col xs="9">
-                    <h2>Active Niche</h2>
+                <Col xs="10">
+                    <ActiveChannel history={ props.history } channel={ activeChannel } type={ activeType } getChannels={ getChannels } />
                 </Col>
             </Row>
         </Container>

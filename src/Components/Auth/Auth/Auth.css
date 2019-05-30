@@ -8,7 +8,6 @@
 .title {
     font-family: 'Press Start 2P', cursive;
     font-size : 5em;
-    margin-top : 25vh;
 }
 
 .auth-row {
@@ -16,11 +15,14 @@
 }
 
 .auth-button {
-    margin-top : 25vh;
 }
 
 .link {
     color : white;
+}
+
+.margin-top {
+    margin-top : 25vh;
 }
 
 .link:hover {
